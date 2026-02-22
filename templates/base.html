@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" x-data>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{% block meta_description %}Dilli Da Dhaba — Authentic North Indian flavours, served fresh in BEML Layout, Bengaluru.{% endblock %}" />
+  <title>{% block title %}Dilli Da Dhaba{% endblock %} | Authentic North Indian Restaurant</title>
+
+  <!-- TailwindCSS CDN (swap for compiled build in production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saffron:  { DEFAULT: '#FF6B00', light: '#FF8C38', dark: '#C85200' },
+            maroon:   { DEFAULT: '#8B1A1A', light: '#B02828', dark: '#5C0E0E' },
+            cream:    { DEFAULT: '#FFF8F0', light: '#FFFDF9', dark: '#F5EAD8' },
+            charcoal: { DEFAULT: '#1A1A1A' },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- HTMX -->
+  <script src="https://unpkg.com/htmx.org@1.9.12" defer></script>
+  <!-- Alpine.js -->
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body class="bg-cream text-charcoal font-body antialiased">
+
+  {% include "partials/navbar.html" %}
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <!-- Custom JS -->
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

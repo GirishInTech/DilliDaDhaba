@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock %}
+{% block meta_description %}Get in touch with Dilli Da Dhaba. Find our address, phone number, and opening hours.{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<section class="bg-maroon text-cream py-20 px-4 text-center">
+  <p class="section-label-light mb-3">Get in Touch</p>
+  <h1 class="font-display font-bold text-5xl sm:text-6xl">Contact Us</h1>
+  <p class="text-cream/65 mt-4 text-lg max-w-lg mx-auto">
+    Visit us, call us, or drop a message — we're always happy to hear from you.
+  </p>
+</section>
+
+<!-- Contact + Map -->
+<section class="py-20 px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14">
+
+    <!-- Info Cards -->
+    <div class="space-y-6">
+
+      <!-- Address -->
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h3 class="contact-label">Address</h3>
+          <p class="contact-value">BEML Layout, Mailasandra<br/>Bengaluru, Karnataka — 560059</p>
+          <a href="https://maps.google.com/?q=Dilli+Da+Dhaba+BEML+Layout+Mailasandra+Bengaluru"
+             target="_blank" rel="noopener noreferrer"
+             class="text-saffron text-sm font-medium hover:underline mt-1 inline-block">
+            Open in Google Maps →
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h3 class="contact-label">Phone / WhatsApp</h3>
+          <a href="tel:+919876543210" class="contact-value text-maroon hover:text-saffron transition-colors block">
+            +91 98765 43210
+          </a>
+          <a href="https://wa.me/919876543210?text=Hi!+I'd+like+to+reserve+a+table+at+Dilli+Da+Dhaba."
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 mt-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors">
+            💬 Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h3 class="contact-label">Email</h3>
+          <a href="mailto:hello@dillidadhaba.in" class="contact-value text-maroon hover:text-saffron transition-colors">
+            hello@dillidadhaba.in
+          </a>
+        </div>
+      </div>
+
+      <!-- Hours -->
+      <div class="contact-card">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <h3 class="contact-label">Opening Hours</h3>
+          <div class="space-y-1 text-charcoal/80 text-sm mt-1">
+            <p><span class="font-medium w-36 inline-block">Monday – Friday</span> 11:00 AM – 11:00 PM</p>
+            <p><span class="font-medium w-36 inline-block">Saturday – Sunday</span> 10:00 AM – 11:30 PM</p>
+            <p class="text-saffron font-medium mt-2">Kitchen last order at 10:30 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Click to Call CTA -->
+      <a href="tel:+919876543210"
+         class="flex items-center justify-center gap-3 w-full bg-saffron hover:bg-saffron-dark text-white font-bold text-lg py-4 rounded-2xl transition-colors shadow-lg">
+        📞 Call Now to Reserve a Table
+      </a>
+    </div>
+
+    <!-- Map Embed -->
+    <div class="rounded-3xl overflow-hidden shadow-2xl border border-cream-dark h-[500px] lg:h-auto">
+      <iframe
+        title="Dilli Da Dhaba location"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.6688!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13e9c99c3a3b%3A0x6a5b2b2b2b2b2b2b!2sBEML%20Layout%2C%20Mailasandra%2C%20Bengaluru%2C%20Karnataka%20560059!5e0!3m2!1sen!2sin!4v1690000000000"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

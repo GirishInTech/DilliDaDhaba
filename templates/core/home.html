@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block meta_description %}Dilli Da Dhaba — Authentic North Indian cuisine in BEML Layout, Bengaluru. Explore our menu today.{% endblock %}
+
+{% block content %}
+
+<!-- ===================== HERO ===================== -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-maroon">
+  <!-- Decorative overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-maroon-dark via-maroon to-maroon-light opacity-90"></div>
+  <div class="absolute inset-0"
+       style="background-image:url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1600&q=80');
+              background-size:cover;background-position:center;opacity:0.18;">
+  </div>
+
+  <!-- Decorative spice circles -->
+  <div class="absolute top-12 right-12 w-64 h-64 rounded-full bg-saffron/10 blur-3xl"></div>
+  <div class="absolute bottom-12 left-12 w-48 h-48 rounded-full bg-saffron/10 blur-3xl"></div>
+
+  <div class="relative max-w-4xl mx-auto text-center px-4 py-24">
+    <p class="inline-flex items-center gap-2 bg-saffron/20 text-saffron text-sm font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+      ✦ BEML Layout, Mailasandra, Bengaluru &nbsp;✦
+    </p>
+    <h1 class="font-display font-bold text-cream text-5xl sm:text-6xl lg:text-7xl leading-tight mb-6">
+      Dilli Da<br/>
+      <span class="text-saffron italic">Dhaba</span>
+    </h1>
+    <p class="text-cream/75 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+      Pure butter, slow-cooked dals, and tandoor magic — straight from the heart of North India to Bengaluru.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'menu' %}"
+         class="btn-primary">
+        View Full Menu
+      </a>
+      <a href="{% url 'contact' %}"
+         class="btn-outline">
+        Reserve a Table
+      </a>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="mt-16 grid grid-cols-3 gap-6 max-w-xl mx-auto">
+      <div class="text-center">
+        <p class="text-saffron font-display font-bold text-3xl">30+</p>
+        <p class="text-cream/60 text-xs uppercase tracking-wider mt-1">Years Serving</p>
+      </div>
+      <div class="text-center border-x border-cream/10">
+        <p class="text-saffron font-display font-bold text-3xl">150+</p>
+        <p class="text-cream/60 text-xs uppercase tracking-wider mt-1">Menu Items</p>
+      </div>
+      <div class="text-center">
+        <p class="text-saffron font-display font-bold text-3xl">4.8★</p>
+        <p class="text-cream/60 text-xs uppercase tracking-wider mt-1">Google Rating</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INTRO STRIP ===================== -->
+<section class="bg-saffron py-10">
+  <div class="max-w-5xl mx-auto px-4 flex flex-wrap justify-center gap-10 text-white text-sm font-medium">
+    <span class="flex items-center gap-2">🌿 Pure Vegetarian Options</span>
+    <span class="flex items-center gap-2">🔥 Live Tandoor</span>
+    <span class="flex items-center gap-2">🧈 Pure Desi Ghee</span>
+    <span class="flex items-center gap-2">🏡 Family Seating</span>
+    <span class="flex items-center gap-2">🎉 Event Booking</span>
+  </div>
+</section>
+
+<!-- ===================== FEATURED DISHES ===================== -->
+{% if featured_items %}
+<section class="py-20 px-4 bg-cream-dark/30">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="section-label">Chef's Picks</p>
+      <h2 class="section-heading">Featured Dishes</h2>
+      <p class="section-subheading">Our most-loved plates, freshly prepared every day.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for item in featured_items %}
+      <div class="dish-card group">
+        <!-- Veg / Non-veg indicator -->
+        <div class="absolute top-3 left-3 z-10">
+          {% if item.veg %}
+          <span class="veg-badge">🟢 Veg</span>
+          {% else %}
+          <span class="nonveg-badge">🔴 Non-Veg</span>
+          {% endif %}
+        </div>
+
+        <!-- Image -->
+        <div class="aspect-square overflow-hidden rounded-t-2xl bg-cream-dark">
+          {% if item.image %}
+          <img src="{{ item.image.url }}"
+               alt="{{ item.name }}"
+               loading="lazy"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          {% else %}
+          <div class="w-full h-full flex items-center justify-center text-6xl">🍛</div>
+          {% endif %}
+        </div>
+
+        <!-- Info -->
+        <div class="p-4">
+          <h3 class="font-display font-semibold text-maroon text-lg leading-snug">{{ item.name }}</h3>
+          {% if item.description %}
+          <p class="text-charcoal/60 text-xs mt-1 line-clamp-2">{{ item.description }}</p>
+          {% endif %}
+          <p class="text-saffron font-bold mt-3 text-sm">{{ item.display_price }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="{% url 'menu' %}" class="btn-primary">See All Dishes</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===================== RESTAURANT INTRO ===================== -->
+<section class="py-20 px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="section-label">Our Story</p>
+      <h2 class="section-heading">The Taste of<br/><span class="text-saffron italic">North India</span></h2>
+      <p class="section-subheading text-left mt-4 max-w-none">
+        What started as a humble dhaba has grown into a beloved dining destination in Bengaluru — but our recipes haven't changed a bit. We still use the same clay tandoor, the same slow-simmered dals, and the same family recipes passed down generations.
+      </p>
+      <p class="text-charcoal/70 text-base leading-relaxed mt-4">
+        Every dish at Dilli Da Dhaba is cooked with pure desi ghee, hand-ground spices, and a generous pour of love.
+      </p>
+      <a href="{% url 'about' %}" class="btn-secondary mt-8 inline-block">Read Our Full Story →</a>
+    </div>
+
+    <div class="relative">
+      <div class="aspect-[4/3] bg-cream-dark rounded-3xl overflow-hidden shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=800&q=80"
+             alt="Our kitchen"
+             loading="lazy"
+             class="w-full h-full object-cover" />
+      </div>
+      <div class="absolute -bottom-5 -right-5 bg-saffron text-white px-6 py-4 rounded-2xl shadow-lg text-center">
+        <p class="font-display font-bold text-2xl">30+</p>
+        <p class="text-xs font-medium uppercase tracking-wider">Years of Heritage</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+{% if testimonials %}
+<section class="py-20 bg-maroon text-cream px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="section-label-light">Reviews</p>
+      <h2 class="font-display font-bold text-cream text-4xl">What Our Guests Say</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for review in testimonials %}
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-cream/10">
+        <div class="flex gap-1 mb-3 text-saffron text-lg">
+          {% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}
+        </div>
+        <p class="text-cream/80 text-sm leading-relaxed italic">"{{ review.body }}"</p>
+        <div class="mt-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-saffron/30 flex items-center justify-center text-saffron font-bold text-sm">
+            {{ review.reviewer_name|first|upper }}
+          </div>
+          <div>
+            <p class="text-cream font-semibold text-sm">{{ review.reviewer_name }}</p>
+            {% if review.source %}<p class="text-cream/50 text-xs">via {{ review.source }}</p>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===================== CTA BANNER ===================== -->
+<section class="py-20 px-4 bg-saffron/10">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="font-display font-bold text-maroon text-4xl sm:text-5xl mb-4">
+      Ready to eat?
+    </h2>
+    <p class="text-charcoal/70 text-lg mb-8">
+      Dine in, take away, or reserve a private table for your special occasion.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'menu' %}" class="btn-primary">Explore the Menu</a>
+      <a href="tel:+919876543210" class="btn-outline-dark">📞 +91 98765 43210</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

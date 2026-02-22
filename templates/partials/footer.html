@@ -1,0 +1,51 @@
+<footer class="bg-maroon text-cream/80 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-3xl">🍛</span>
+          <div>
+            <p class="font-display font-bold text-cream text-xl">Dilli Da Dhaba</p>
+            <p class="text-xs text-cream/50">Authentic Punjabi Cuisine</p>
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed text-cream/70">
+          Bringing authentic North Indian flavours to Bengaluru since day one. Pure ingredients, family recipes, warm hospitality.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-cream font-semibold uppercase tracking-widest text-xs mb-5">Quick Links</h3>
+        <ul class="space-y-3 text-sm">
+          <li><a href="{% url 'home' %}"    class="hover:text-saffron transition-colors">Home</a></li>
+          <li><a href="{% url 'menu' %}"    class="hover:text-saffron transition-colors">Our Menu</a></li>
+          <li><a href="{% url 'about' %}"   class="hover:text-saffron transition-colors">About Us</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-saffron transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-cream font-semibold uppercase tracking-widest text-xs mb-5">Find Us</h3>
+        <address class="not-italic text-sm space-y-3 text-cream/70">
+          <p>📍 BEML Layout, Mailasandra, Bengaluru, Karnataka 560059</p>
+          <p>
+            📞 <a href="tel:+919876543210" class="hover:text-saffron transition-colors">+91 98765 43210</a>
+          </p>
+          <p>
+            ✉️ <a href="mailto:hello@dillidadhaba.in" class="hover:text-saffron transition-colors">hello@dillidadhaba.in</a>
+          </p>
+          <p>🕐 Mon – Sun: 11:00 AM – 11:00 PM</p>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="border-t border-cream/10 mt-10 pt-6 text-center text-xs text-cream/40">
+      &copy; {% now "Y" %} Dilli Da Dhaba. All rights reserved.
+    </div>
+  </div>
+</footer>

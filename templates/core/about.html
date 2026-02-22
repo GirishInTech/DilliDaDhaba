@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block meta_description %}The story of Dilli Da Dhaba — authentic North Indian cooking brought to BEML Layout, Bengaluru.{% endblock %}
+
+{% block content %}
+
+<!-- Page Hero -->
+<section class="bg-maroon text-cream py-20 px-4 text-center">
+  <p class="section-label-light mb-3">Our Heritage</p>
+  <h1 class="font-display font-bold text-5xl sm:text-6xl">About Us</h1>
+  <p class="text-cream/65 mt-4 text-lg max-w-xl mx-auto">
+    A family story simmered over three decades, cooked with tradition.
+  </p>
+</section>
+
+<!-- Story Section -->
+<section class="py-20 px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <!-- Timeline / Narrative -->
+    <div class="space-y-10">
+      <div>
+        <h2 class="font-display font-bold text-maroon text-3xl mb-4">How It All Began</h2>
+        <p class="text-charcoal/75 text-base leading-relaxed">
+          Dilli Da Dhaba was born from a simple dream: bring the real flavours of North India — the punjabi dhabas, the clay tandoors, the slow-cooked curries — to Bengaluru. No shortcuts, no compromises, just pure and honest Punjabi cooking.
+        </p>
+        <p class="text-charcoal/75 text-base leading-relaxed mt-4">
+          Word spread fast across BEML Layout and Mailasandra. Today, Dilli Da Dhaba is a go-to destination for hundreds of families and food lovers across Bengaluru — but the chulha still burns the same way.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display font-bold text-maroon text-3xl mb-4">Our Philosophy</h2>
+        <ul class="space-y-4 text-charcoal/75 text-base">
+          <li class="flex items-start gap-3">
+            <span class="text-saffron text-xl mt-0.5">✦</span>
+            <span><strong>Pure ingredients.</strong> We source mustard oil, fresh paneer, and seasonal vegetables from trusted suppliers every morning.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-saffron text-xl mt-0.5">✦</span>
+            <span><strong>Slow cooking.</strong> Our dal makhani simmers for 12 hours on low flame — no pressure cooker shortcuts.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-saffron text-xl mt-0.5">✦</span>
+            <span><strong>No artificial colours or preservatives.</strong> Every dish is prepared fresh and served hot.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-saffron text-xl mt-0.5">✦</span>
+            <span><strong>Warm hospitality.</strong> We treat every guest like family. No rush, no attitude — just good food and good vibes.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Images -->
+    <div class="space-y-6">
+      <div class="rounded-3xl overflow-hidden shadow-xl aspect-[4/3]">
+        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&q=80"
+             alt="Our kitchen"
+             loading="lazy"
+             class="w-full h-full object-cover" />
+      </div>
+      <div class="grid grid-cols-2 gap-6">
+        <div class="rounded-2xl overflow-hidden shadow-lg aspect-square">
+          <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80"
+               alt="North Indian food"
+               loading="lazy"
+               class="w-full h-full object-cover" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg aspect-square">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80"
+               alt="Tandoor breads"
+               loading="lazy"
+               class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Grid -->
+<section class="py-16 px-4 bg-saffron/8 bg-cream-dark/40">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="section-label">Why Choose Us</p>
+      <h2 class="section-heading">Made with Pride</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      {% for item in values %}
+      {% empty %}
+      {% for v in "1234" %}
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-cream-dark">
+        {% if forloop.counter == 1 %}
+        <div class="text-4xl mb-3">🧈</div>
+        <h3 class="font-semibold text-maroon text-base">Desi Ghee</h3>
+        <p class="text-charcoal/60 text-xs mt-2">Pure cow ghee in every recipe.</p>
+        {% elif forloop.counter == 2 %}
+        <div class="text-4xl mb-3">🔥</div>
+        <h3 class="font-semibold text-maroon text-base">Live Tandoor</h3>
+        <p class="text-charcoal/60 text-xs mt-2">Wood-fired clay oven, always on.</p>
+        {% elif forloop.counter == 3 %}
+        <div class="text-4xl mb-3">🌿</div>
+        <h3 class="font-semibold text-maroon text-base">Fresh Daily</h3>
+        <p class="text-charcoal/60 text-xs mt-2">Ingredients sourced every morning.</p>
+        {% else %}
+        <div class="text-4xl mb-3">👨‍👩‍👧</div>
+        <h3 class="font-semibold text-maroon text-base">Family Recipes</h3>
+        <p class="text-charcoal/60 text-xs mt-2">Three generations, one tradition.</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 px-4 bg-maroon text-cream text-center">
+  <h2 class="font-display font-bold text-4xl mb-4">Come Taste the Difference</h2>
+  <p class="text-cream/65 text-lg mb-8">Walk in any day. No reservation needed for lunch.</p>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="{% url 'menu' %}" class="btn-primary">Browse the Menu</a>
+    <a href="{% url 'contact' %}" class="btn-outline">Find Us</a>
+  </div>
+</section>
+
+{% endblock %}
