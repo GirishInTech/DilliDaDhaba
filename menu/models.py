@@ -33,6 +33,10 @@ class MenuItem(models.Model):
         default=True,
         help_text='Green dot = veg, Red dot = non-veg',
     )
+    egg                = models.BooleanField(
+        default=False,
+        help_text='Contains egg but no meat (e.g. egg curry, egg bhurji). Set veg=False when this is True.',
+    )
 
     # Prices — at least one must be filled in
     price_half         = models.DecimalField(

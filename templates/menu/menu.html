@@ -44,18 +44,17 @@
           {% endfor %}
         </div>
 
-        <!-- Veg-only toggle -->
-        <label class="flex items-center gap-2 cursor-pointer select-none shrink-0
-                       bg-white border border-cream-dark rounded-full px-4 py-2">
-          <div class="relative w-10 h-5">
-            <input type="checkbox" class="sr-only peer" x-model="vegOnly" @change="loadMenu()">
-            <div class="absolute inset-0 bg-gray-200 peer-checked:bg-green-500
-                        rounded-full transition-colors duration-200"></div>
-            <div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow
-                        transition-transform duration-200 peer-checked:translate-x-5"></div>
-          </div>
-          <span class="text-sm font-medium text-maroon">🌿 Veg Only</span>
-        </label>
+        <!-- Diet filter pills -->
+        <div class="flex items-center gap-2 shrink-0 flex-wrap">
+          <button @click="dietFilter='all'; loadMenu()"
+                  :class="dietFilter==='all' ? 'tab-active' : 'tab'">All</button>
+          <button @click="dietFilter='veg'; loadMenu()"
+                  :class="dietFilter==='veg' ? 'tab-active' : 'tab'">🌿 Veg</button>
+          <button @click="dietFilter='egg'; loadMenu()"
+                  :class="dietFilter==='egg' ? 'tab-active' : 'tab'">🥚 Egg</button>
+          <button @click="dietFilter='nonveg'; loadMenu()"
+                  :class="dietFilter==='nonveg' ? 'tab-active' : 'tab'">🔴 Non-Veg</button>
+        </div>
 
       </div>
     </div>
@@ -81,10 +80,11 @@
 
       <template x-for="item in items" :key="item.id">
         <div class="dish-card group relative">
-          <!-- Veg badge -->
+          <!-- Diet badge -->
           <div class="absolute top-3 left-3 z-10">
-            <span x-show="item.veg"  class="veg-badge">🟢 Veg</span>
-            <span x-show="!item.veg" class="nonveg-badge">🔴 Non-Veg</span>
+            <span x-show="item.veg && !item.egg"  class="veg-badge">🟢 Veg</span>
+            <span x-show="item.egg"               class="egg-badge">🥚 Egg</span>
+            <span x-show="!item.veg && !item.egg" class="nonveg-badge">🔴 Non-Veg</span>
           </div>
 
           <!-- Image -->
@@ -138,7 +138,7 @@ function menuApp() {
     items: [],
     loading: true,
     activeCategory: null,
-    vegOnly: false,
+    dietFilter: 'all',
 
     async init() {
       await this.loadMenu();
@@ -154,7 +154,7 @@ function menuApp() {
       try {
         const params = new URLSearchParams();
         if (this.activeCategory !== null) params.append('category', this.activeCategory);
-        if (this.vegOnly) params.append('veg', 'true');
+        if (this.dietFilter !== 'all') params.append('diet', this.dietFilter);
 
         const res = await fetch(`/api/menu?${params.toString()}`);
         if (!res.ok) throw new Error('Network error');

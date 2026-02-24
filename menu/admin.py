@@ -30,6 +30,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     list_filter  = (
         'category',
         'veg',
+        'egg',
         'featured',
         'is_available',
         'needs_verification',
@@ -40,7 +41,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     readonly_fields = ('image_preview', 'created_at', 'updated_at')
     fieldsets = (
         ('Basic Info', {
-            'fields': ('category', 'name', 'description', 'veg'),
+            'fields': ('category', 'name', 'description', 'veg', 'egg'),
         }),
         ('Pricing', {
             'fields': ('price_regular', 'price_half', 'price_full'),
@@ -61,8 +62,10 @@ class MenuItemAdmin(admin.ModelAdmin):
 
     @admin.display(description='Type', ordering='veg')
     def veg_badge(self, obj):
+        if obj.egg:
+            return format_html('<span style="color:#ca8a04">🥚 Egg</span>')
         color = '#16a34a' if obj.veg else '#dc2626'
-        label = '● Veg' if obj.veg else '● Non-Veg'
+        label = '🟢 Veg' if obj.veg else '🔴 Non-Veg'
         return format_html('<span style="color:{}">{}</span>', color, label)
 
     @admin.display(description='Price')

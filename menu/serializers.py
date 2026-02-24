@@ -17,6 +17,7 @@ class MenuItemSerializer(serializers.ModelSerializer):
             'category',
             'category_name',
             'veg',
+            'egg',
             'price_regular',
             'price_half',
             'price_full',

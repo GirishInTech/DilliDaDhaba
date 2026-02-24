@@ -29,9 +29,11 @@ def category_list(request):
 @throttle_classes([AnonRateThrottle])
 def menu_list(request):
     """
-    GET /api/menu              — full available menu
+    GET /api/menu               — full available menu
     GET /api/menu?category=<id> — items filtered by category id
-    GET /api/menu?veg=true      — veg-only items
+    GET /api/menu?diet=veg      — veg items only (no egg)
+    GET /api/menu?diet=egg      — egg items only
+    GET /api/menu?diet=nonveg   — non-veg, non-egg items only
     """
     qs = (
         MenuItem.objects.filter(is_available=True)
@@ -43,9 +45,13 @@ def menu_list(request):
     if category_id:
         qs = qs.filter(category_id=category_id)
 
-    veg_param = request.query_params.get('veg')
-    if veg_param is not None:
-        qs = qs.filter(veg=veg_param.lower() == 'true')
+    diet = request.query_params.get('diet')
+    if diet == 'veg':
+        qs = qs.filter(veg=True, egg=False)
+    elif diet == 'egg':
+        qs = qs.filter(egg=True)
+    elif diet == 'nonveg':
+        qs = qs.filter(veg=False, egg=False)
 
     serializer = MenuItemSerializer(qs, many=True, context={'request': request})
     return Response(serializer.data)
