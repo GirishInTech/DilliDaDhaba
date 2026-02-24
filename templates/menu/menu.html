@@ -88,25 +88,25 @@
           </div>
 
           <!-- Image -->
-          <div class="aspect-square overflow-hidden rounded-t-2xl bg-cream-dark">
+          <div class="aspect-[4/3] sm:aspect-square overflow-hidden rounded-t-2xl bg-cream-dark">
             <template x-if="item.image_url">
               <img :src="item.image_url" :alt="item.name"
                    loading="lazy"
                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
             </template>
             <template x-if="!item.image_url">
-              <div class="w-full h-full flex items-center justify-center text-6xl">🍛</div>
+              <div class="w-full h-full flex items-center justify-center text-3xl sm:text-6xl">🍛</div>
             </template>
           </div>
 
           <!-- Info -->
           <div class="p-2 sm:p-4">
             <span x-text="item.category_name"
-                  class="text-xs text-saffron font-semibold uppercase tracking-wider"></span>
+                  class="hidden sm:block text-xs text-saffron font-semibold uppercase tracking-wider"></span>
             <h3 x-text="item.name"
-                class="font-display font-semibold text-maroon text-sm sm:text-base leading-snug mt-0.5"></h3>
+                class="font-display font-semibold text-maroon text-xs sm:text-base leading-snug mt-0.5"></h3>
             <p x-show="item.description" x-text="item.description"
-               class="text-charcoal/60 text-xs mt-1 line-clamp-1 sm:line-clamp-2"></p>
+               class="hidden sm:block text-charcoal/60 text-xs mt-1 line-clamp-2"></p>
 
             <!-- Price display -->
             <div class="mt-2 sm:mt-3">
